@@ -11,7 +11,7 @@ local WrapperFrame = CreateFrame("Frame", nil, UIParent)
 WrapperFrame:SetFrameStrata("DIALOG")
 WrapperFrame:SetSize(295, 95)
 WrapperFrame:SetMovable(true)
-WrapperFrame:EnableMouse(true)
+WrapperFrame:EnableMouse(false)
 WrapperFrame:SetClampedToScreen(true)
 WrapperFrame:RegisterForDrag("LeftButton")
 WrapperFrame.isLocked = true
@@ -241,10 +241,12 @@ SlashCmdList["BGB"] = function(msg)
     if cmd == "move" then
         WrapperFrame.isLocked = not WrapperFrame.isLocked
         if WrapperFrame.isLocked then
+			WrapperFrame:EnableMouse(false)
             hitbox:Hide()
             moveText:Hide()
             BGBprint("Frame locked")
         else
+			WrapperFrame:EnableMouse(true)
             hitbox:Show()
             moveText:Show()
             BGBprint("Frame unlocked")
@@ -270,4 +272,5 @@ SlashCmdList["BGB"] = function(msg)
             print(line)
         end
     end
+
 end
