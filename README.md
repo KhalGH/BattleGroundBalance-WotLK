@@ -2,7 +2,7 @@
 **BattleGroundBalance** is a World of Warcraft addon for **Wrath of the Lich King (WotLK) 3.3.5a**  
 
 ## Features  
-- Shows proportional bars of total damage and healing done by each faction, to help visualize overall balance. 
+- Shows proportional bars of total damage and healing done by each faction, to help visualize overall BG balance. 
 - Displays the number of damagers and healers per faction (requires [BattleGroundHealers v1.4](https://github.com/KhalGH/BattleGroundHealers-WotLK/releases/tag/v1.4)).
 - Shows the highest honorable kills reached by a player in each faction, as a representative value for the team.
 
