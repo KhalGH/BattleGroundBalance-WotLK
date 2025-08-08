@@ -12,8 +12,8 @@
 </p>
 
 ## Chat Commands  
-- **`/bgb move`** &nbsp; &nbsp;&nbsp; → Toggles frame lock/unlock.
-- **`/bgb scale <#>`** → Sets frame scale (0.5 to 2.5).  
+- **`/bgb move`** &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; → Toggles frame lock/unlock.
+- **`/bgb scale <#>`** → Sets frame scale (0.5 to 2).  
 
 ## Installation  
 1. [Download](https://github.com/KhalGH/BattleGroundBalance-WotLK/releases/download/v1.0/BattleGroundBalance-v1.0.zip) the addon
