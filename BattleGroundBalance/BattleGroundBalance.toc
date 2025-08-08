@@ -1,0 +1,8 @@
+## Interface: 30300
+## Title: BattleGroundBalance
+## Version: 1.0
+## Notes: Displays proportional bar charts showing damage and healing done by both factions in BGs
+## Author: |cffc41f3bKhal|r
+## SavedVariables: BattleGroundBalanceDB
+
+BattleGroundBalance.lua
