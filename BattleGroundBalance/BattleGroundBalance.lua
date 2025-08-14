@@ -1,7 +1,7 @@
 local addonName = ...
 
-local CreateFrame, UnitName, GetRealmName, select, IsInInstance, GetNumBattlefieldScores, GetBattlefieldScore, print, tonumber, math_max, math_min , ipairs =
-      CreateFrame, UnitName, GetRealmName, select, IsInInstance, GetNumBattlefieldScores, GetBattlefieldScore, print, tonumber, math.max, math.min , ipairs
+local CreateFrame, UnitName, GetRealmName, select, IsInInstance, WorldStateScoreFrame, SetBattlefieldScoreFaction, RequestBattlefieldScoreData, GetNumBattlefieldScores, GetBattlefieldScore, print, tonumber, math_max, math_min , ipairs =
+      CreateFrame, UnitName, GetRealmName, select, IsInInstance, WorldStateScoreFrame, SetBattlefieldScoreFaction, RequestBattlefieldScoreData, GetNumBattlefieldScores, GetBattlefieldScore, print, tonumber, math.max, math.min , ipairs
 
 local Addon = CreateFrame("Frame")
 local playerKey = UnitName("player") .. " - " .. GetRealmName()
@@ -147,12 +147,15 @@ local function UpdateBars()
     else
         ParentFrame:Hide()
     end
+    if WorldStateScoreFrame:IsShown() and WorldStateScoreFrame.selectedTab and WorldStateScoreFrame.selectedTab > 1 then return end
+    SetBattlefieldScoreFaction()
+    RequestBattlefieldScoreData()
     local aHKs, hHKs = 0, 0
     local aPctDmg, hPctDmg = 0.5, 0.5
     local aPctHeal, hPctHeal = 0.5, 0.5
     local aDamagers, hDamagers = 0, 0
-    local aHealers = BattleGroundHealers.AllianceCount
-    local hHealers = BattleGroundHealers.HordeCount
+    local aHealers = (BattleGroundHealers and BattleGroundHealers.AllianceCount) or 0
+    local hHealers = (BattleGroundHealers and BattleGroundHealers.HordeCount) or 0
     if inBG then
         local numScores = GetNumBattlefieldScores()
         local aDmg, hDmg, aHeal, hHeal = 0, 0, 0, 0
@@ -241,12 +244,12 @@ SlashCmdList["BGB"] = function(msg)
     if cmd == "move" then
         WrapperFrame.isLocked = not WrapperFrame.isLocked
         if WrapperFrame.isLocked then
-			WrapperFrame:EnableMouse(false)
+            WrapperFrame:EnableMouse(false)
             hitbox:Hide()
             moveText:Hide()
             BGBprint("Frame locked")
         else
-			WrapperFrame:EnableMouse(true)
+            WrapperFrame:EnableMouse(true)
             hitbox:Show()
             moveText:Show()
             BGBprint("Frame unlocked")
@@ -272,5 +275,4 @@ SlashCmdList["BGB"] = function(msg)
             print(line)
         end
     end
-
 end
