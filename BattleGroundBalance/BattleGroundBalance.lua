@@ -148,8 +148,6 @@ local function UpdateBars()
         ParentFrame:Hide()
     end
     if WorldStateScoreFrame:IsShown() and WorldStateScoreFrame.selectedTab and WorldStateScoreFrame.selectedTab > 1 then return end
-    SetBattlefieldScoreFaction()
-    RequestBattlefieldScoreData()
     local aHKs, hHKs = 0, 0
     local aPctDmg, hPctDmg = 0.5, 0.5
     local aPctHeal, hPctHeal = 0.5, 0.5
@@ -157,10 +155,11 @@ local function UpdateBars()
     local aHealers = (BattleGroundHealers and BattleGroundHealers.AllianceCount) or 0
     local hHealers = (BattleGroundHealers and BattleGroundHealers.HordeCount) or 0
     if inBG then
-        local numScores = GetNumBattlefieldScores()
+        SetBattlefieldScoreFaction()
+        RequestBattlefieldScoreData()
         local aDmg, hDmg, aHeal, hHeal = 0, 0, 0, 0
         local aCnt, hCnt = 0, 0
-        for i = 1, numScores do
+        for i = 1, GetNumBattlefieldScores() do
             local _, _, HKs, _, _, faction, _, _, _, _, damageDone, healingDone = GetBattlefieldScore(i)
             if faction == 1 then
                 aCnt = aCnt +1
