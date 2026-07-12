@@ -17,7 +17,7 @@
 - **`/bgb width <#>`** &nbsp;&nbsp; &nbsp; → Sets bar width (150 to 500).
 - **`/bgb height <#>`** &nbsp; &nbsp; → Sets bar height (20 to 100).
 - **`/bgb iconSize <#>`** → Sets icon size (25 to 100).
-- **`/bgb scale <#>`** &nbsp; &nbsp;&nbsp; → Sets font size (10 to 50).  
+- **`/bgb fontSize <#>`** &nbsp; &nbsp;&nbsp; → Sets font size (10 to 50).  
 - **`/bgb reset`** &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; → Reset all settings to default.  
 
 ## Installation  
