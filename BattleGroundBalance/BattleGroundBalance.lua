@@ -343,8 +343,8 @@ end
 
 local SettingsOrder = {
     {key = "scale",    label = "Set frame scale"},
-    {key = "width",    label = "Set bars width"},
-    {key = "height",   label = "Set bars height"},
+    {key = "width",    label = "Set bar width"},
+    {key = "height",   label = "Set bar height"},
     {key = "iconSize", label = "Set icon size"},
     {key = "fontSize", label = "Set font size"},
 }
