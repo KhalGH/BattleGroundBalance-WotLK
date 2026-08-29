@@ -16,6 +16,8 @@ local DefaultSettings = {
     height = 27,
     iconSize = 40,
     fontSize = 12,
+    dmgThreshold = 70000,
+    healThreshold = 35000,
 }
 
 local SettingsLimits = {
@@ -24,6 +26,8 @@ local SettingsLimits = {
     height   = {20, 100},
     iconSize = {25, 100},
     fontSize = {10, 50},
+    dmgThreshold  = {0, 200000},
+    healThreshold = {0, 100000},
 }
 
 local WrapperFrame = CreateFrame("Frame", nil, UIParent)
@@ -261,12 +265,12 @@ local function UpdateScoreData()
                 end
             end
         end
-        if aDmg >= 100000 and hDmg >= 100000 then
+        if aDmg > db.dmgThreshold and hDmg > db.dmgThreshold then
             local totalDmg = aDmg + hDmg
             aPctDmg = aDmg / totalDmg
             hPctDmg = hDmg / totalDmg
         end
-        if aHeal >= 50000 and hHeal >= 50000 then
+        if aHeal > db.healThreshold and hHeal > db.healThreshold then
             local totalHeal = aHeal + hHeal
             aPctHeal = aHeal / totalHeal
             hPctHeal = hHeal / totalHeal
@@ -342,11 +346,13 @@ local function HandleSetting(cmd, rest)
 end
 
 local SettingsOrder = {
-    {key = "scale",    label = "Set frame scale"},
-    {key = "width",    label = "Set bar width"},
-    {key = "height",   label = "Set bar height"},
-    {key = "iconSize", label = "Set icon size"},
-    {key = "fontSize", label = "Set font size"},
+    {key = "scale",         label = "Set frame scale"},
+    {key = "width",         label = "Set bar width"},
+    {key = "height",        label = "Set bar height"},
+    {key = "iconSize",      label = "Set icon size"},
+    {key = "fontSize",      label = "Set font size"},
+    {key = "dmgThreshold",  label = "Set min damage to show ratio"},
+    {key = "healThreshold", label = "Set min healing to show ratio"},
 }
 
 local function BuildHelpTextList()
